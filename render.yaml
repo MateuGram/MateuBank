@@ -3,7 +3,7 @@ services:
     name: mateubank
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python MateuBank.py
+    startCommand: gunicorn MateuBank:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.0
