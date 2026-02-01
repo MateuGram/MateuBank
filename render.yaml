@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: mateubank
+    env: python
+    buildCommand: ""
+    startCommand: python mateubank.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+    plan: free
