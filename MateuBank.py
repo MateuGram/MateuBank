@@ -20,7 +20,6 @@ HTML_TEMPLATE = '''
         body { background: #0A0E17; color: #FFFFFF; min-height: 100vh; padding: 20px; }
         .container { max-width: 1200px; margin: 0 auto; }
         
-        /* Шапка */
         .header { 
             background: #1A1F2E; 
             border-radius: 20px; 
@@ -37,7 +36,6 @@ HTML_TEMPLATE = '''
         .logo-text p { font-size: 14px; color: #8B93B0; margin-top: 5px; }
         .time-display { font-size: 16px; color: #8B93B0; }
         
-        /* Карточки баланса */
         .balance-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
@@ -67,7 +65,6 @@ HTML_TEMPLATE = '''
         }
         .card-extra { font-size: 12px; color: #8B93B0; }
         
-        /* Общий баланс */
         .total-balance {
             background: linear-gradient(135deg, #1A1F2E 0%, #2A2F3E 100%);
             border-radius: 15px;
@@ -79,7 +76,6 @@ HTML_TEMPLATE = '''
         .total-label { font-size: 16px; color: #FFD166; margin-bottom: 10px; }
         .total-amount { font-size: 48px; font-weight: bold; color: #FFD166; }
         
-        /* Кнопки действий */
         .actions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -107,7 +103,6 @@ HTML_TEMPLATE = '''
         }
         .action-btn-icon { font-size: 24px; }
         
-        /* Цвета кнопок */
         .btn-work { background: linear-gradient(135deg, #007AFF, #5AC8FA); }
         .btn-business { background: linear-gradient(135deg, #34C759, #00FF9D); }
         .btn-casino { background: linear-gradient(135deg, #FF3B30, #FF9500); }
@@ -115,7 +110,6 @@ HTML_TEMPLATE = '''
         .btn-shop { background: linear-gradient(135deg, #9C27B0, #E040FB); }
         .btn-transfer { background: linear-gradient(135deg, #00BCD4, #00D4FF); }
         
-        /* Модальные окна */
         .modal {
             display: none;
             position: fixed;
@@ -153,7 +147,6 @@ HTML_TEMPLATE = '''
             cursor: pointer;
         }
         
-        /* Формы */
         .form-group { margin-bottom: 20px; }
         .form-label { 
             display: block; 
@@ -206,7 +199,6 @@ HTML_TEMPLATE = '''
             border-radius: 50%;
         }
         
-        /* Кнопки */
         .btn {
             background: #00D4FF;
             color: white;
@@ -227,7 +219,6 @@ HTML_TEMPLATE = '''
         .btn-warning { background: #FFD166; color: #333; }
         .btn-warning:hover { background: #FFC233; }
         
-        /* Игры */
         .game-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -251,7 +242,6 @@ HTML_TEMPLATE = '''
         .game-title { font-size: 16px; font-weight: bold; margin-bottom: 5px; }
         .game-desc { font-size: 12px; color: #8B93B0; }
         
-        /* Уведомления */
         .notification {
             position: fixed;
             top: 20px;
@@ -266,7 +256,6 @@ HTML_TEMPLATE = '''
             max-width: 300px;
         }
         
-        /* Адаптивность */
         @media (max-width: 768px) {
             .balance-grid { grid-template-columns: 1fr; }
             .actions-grid { grid-template-columns: 1fr; }
@@ -276,7 +265,6 @@ HTML_TEMPLATE = '''
 </head>
 <body>
     <div class="container">
-        <!-- Шапка -->
         <div class="header">
             <div class="logo">
                 <div class="logo-icon">⚡</div>
@@ -288,16 +276,13 @@ HTML_TEMPLATE = '''
             <div class="time-display" id="currentTime">🕐 Загрузка...</div>
         </div>
 
-        <!-- Карточки баланса -->
         <div class="balance-grid">
             <div class="balance-card">
                 <div class="card-title">💳 Карта</div>
                 <div class="card-amount" id="balanceCard">0 M฿</div>
                 <div class="card-extra">Основной счет</div>
             </div>
-            <div class="balance-card" id="phoneCard">
-                <!-- Телефон будет обновляться через JS -->
-            </div>
+            <div class="balance-card" id="phoneCard"></div>
             <div class="balance-card">
                 <div class="card-title">🏦 Депозит</div>
                 <div class="card-amount" id="balanceDeposit">0 M฿</div>
@@ -305,13 +290,11 @@ HTML_TEMPLATE = '''
             </div>
         </div>
 
-        <!-- Общий баланс -->
         <div class="total-balance">
             <div class="total-label">💰 ОБЩИЙ БАЛАНС</div>
             <div class="total-amount" id="totalBalance">0 M฿</div>
         </div>
 
-        <!-- Кнопки действий -->
         <div class="actions-grid">
             <button class="action-btn btn-work" onclick="openModal('workModal')">
                 <span class="action-btn-icon">💼</span>
@@ -339,11 +322,8 @@ HTML_TEMPLATE = '''
             </button>
         </div>
 
-        <!-- Уведомление -->
         <div class="notification" id="notification"></div>
 
-        <!-- Модальные окна -->
-        <!-- Модалка работы -->
         <div class="modal" id="workModal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -376,7 +356,6 @@ HTML_TEMPLATE = '''
             </div>
         </div>
 
-        <!-- Модалка бизнеса -->
         <div class="modal" id="businessModal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -401,7 +380,6 @@ HTML_TEMPLATE = '''
             </div>
         </div>
 
-        <!-- Модалка казино -->
         <div class="modal" id="casinoModal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -412,14 +390,11 @@ HTML_TEMPLATE = '''
                     <p>Угадайте число от 1 до 25</p>
                     <p style="color: #00FF9D;">Выигрыш = число × 100 M฿</p>
                 </div>
-                <div class="radio-group" id="casinoNumbers" style="justify-content: center;">
-                    <!-- Числа будут добавлены через JS -->
-                </div>
+                <div class="radio-group" id="casinoNumbers" style="justify-content: center;"></div>
                 <button class="btn btn-danger" onclick="makeBet()" style="margin-top: 20px;">🎲 Сделать ставку</button>
             </div>
         </div>
 
-        <!-- Модалка майнинга -->
         <div class="modal" id="miningModal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -434,7 +409,6 @@ HTML_TEMPLATE = '''
             </div>
         </div>
 
-        <!-- Модалка магазина -->
         <div class="modal" id="shopModal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -444,13 +418,10 @@ HTML_TEMPLATE = '''
                 <div style="margin-bottom: 20px; padding: 15px; background: #2A3140; border-radius: 10px;">
                     💳 Баланс на карте: <span id="shopBalance">0 M฿</span>
                 </div>
-                <div id="shopItems">
-                    <!-- Товары будут добавлены через JS -->
-                </div>
+                <div id="shopItems"></div>
             </div>
         </div>
 
-        <!-- Модалка перевода -->
         <div class="modal" id="transferModal">
             <div class="modal-content">
                 <div class="modal-header">
@@ -498,7 +469,6 @@ HTML_TEMPLATE = '''
         let selectedCasinoNumber = 0;
         let miningInterval = null;
 
-        // Обновление времени
         function updateTime() {
             const now = new Date();
             document.getElementById('currentTime').textContent = 
@@ -507,7 +477,6 @@ HTML_TEMPLATE = '''
         setInterval(updateTime, 1000);
         updateTime();
 
-        // Загрузка данных игры
         async function loadGameData() {
             try {
                 const response = await fetch('/api/game-data');
@@ -518,15 +487,12 @@ HTML_TEMPLATE = '''
             }
         }
 
-        // Обновление интерфейса
         function updateUI() {
-            // Балансы
             document.getElementById('balanceCard').textContent = 
                 gameData.balance_card.toFixed(1) + ' M฿';
             document.getElementById('balanceDeposit').textContent = 
                 gameData.balance_deposit.toFixed(1) + ' M฿';
             
-            // Телефон
             const phoneCard = document.getElementById('phoneCard');
             if (gameData.phone_owned) {
                 phoneCard.innerHTML = `
@@ -542,11 +508,9 @@ HTML_TEMPLATE = '''
                 `;
             }
             
-            // Общий баланс
             const total = gameData.balance_card + gameData.balance_phone + gameData.balance_deposit;
             document.getElementById('totalBalance').textContent = total.toFixed(1) + ' M฿';
             
-            // Бизнес
             document.getElementById('businessLevel').textContent = gameData.business_level;
             document.getElementById('businessIncome').textContent = 
                 (gameData.business_level * 50) + ' M฿';
@@ -565,15 +529,11 @@ HTML_TEMPLATE = '''
                 document.getElementById('serveCustomerBtn').style.display = 'none';
             }
             
-            // Магазин
             document.getElementById('shopBalance').textContent = gameData.balance_card.toFixed(1) + ' M฿';
             updateShopItems();
-            
-            // Перевод
             updateTransferOptions();
         }
 
-        // Работа
         async function startWork(jobType) {
             try {
                 const response = await fetch('/api/work', {
@@ -597,7 +557,6 @@ HTML_TEMPLATE = '''
             }
         }
 
-        // Бизнес
         async function startBusiness() {
             try {
                 const response = await fetch('/api/business/start', {
@@ -640,7 +599,6 @@ HTML_TEMPLATE = '''
             }
         }
 
-        // Казино
         function initCasino() {
             const container = document.getElementById('casinoNumbers');
             container.innerHTML = '';
@@ -681,7 +639,6 @@ HTML_TEMPLATE = '''
             }
         }
 
-        // Майнинг
         async function startMining() {
             try {
                 const response = await fetch('/api/mining/start', {
@@ -706,7 +663,7 @@ HTML_TEMPLATE = '''
                         
                         if (progress >= 100) {
                             clearInterval(miningInterval);
-                            completeMining(result.mining_value);
+                            completeMining();
                         }
                     }, 100);
                 }
@@ -715,7 +672,7 @@ HTML_TEMPLATE = '''
             }
         }
 
-        async function completeMining(value) {
+        async function completeMining() {
             try {
                 const response = await fetch('/api/mining/complete', {
                     method: 'POST',
@@ -736,7 +693,6 @@ HTML_TEMPLATE = '''
             }
         }
 
-        // Магазин
         function updateShopItems() {
             const container = document.getElementById('shopItems');
             const items = [
@@ -845,7 +801,6 @@ HTML_TEMPLATE = '''
             }
         }
 
-        // Переводы
         function updateTransferOptions() {
             const fromContainer = document.getElementById('transferFrom');
             const toContainer = document.getElementById('transferTo');
@@ -862,7 +817,6 @@ HTML_TEMPLATE = '''
             accounts.forEach(acc => {
                 if (acc.id === 'phone' && !acc.available) return;
                 
-                // From options
                 const fromLabel = document.createElement('label');
                 fromLabel.className = 'radio-label';
                 fromLabel.innerHTML = `
@@ -872,7 +826,6 @@ HTML_TEMPLATE = '''
                 `;
                 fromContainer.appendChild(fromLabel);
                 
-                // To options (кроме текущего выбранного from)
                 const toLabel = document.createElement('label');
                 toLabel.className = 'radio-label';
                 toLabel.innerHTML = `
@@ -935,7 +888,6 @@ HTML_TEMPLATE = '''
             }
         }
 
-        // Уведомления
         function showNotification(message, type) {
             const notification = document.getElementById('notification');
             notification.textContent = message;
@@ -949,7 +901,6 @@ HTML_TEMPLATE = '''
             }, 3000);
         }
 
-        // Модальные окна
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'flex';
             if (modalId === 'casinoModal') initCasino();
@@ -963,7 +914,6 @@ HTML_TEMPLATE = '''
             }
         }
 
-        // Закрытие модалок при клике вне их
         window.onclick = function(event) {
             if (event.target.className === 'modal') {
                 event.target.style.display = 'none';
@@ -974,7 +924,6 @@ HTML_TEMPLATE = '''
             }
         }
 
-        // Инициализация
         document.addEventListener('DOMContentLoaded', () => {
             loadGameData();
         });
@@ -983,7 +932,6 @@ HTML_TEMPLATE = '''
 </html>
 '''
 
-# API эндпоинты
 @app.route('/')
 def index():
     return HTML_TEMPLATE
@@ -1177,7 +1125,7 @@ def shop_buy():
     if item_id == 'phone' and not game_data['phone_owned']:
         game_data['balance_card'] -= price
         game_data['phone_owned'] = True
-        game_data['balance_phone'] = 100  # Бонус
+        game_data['balance_phone'] = 100
         message = f'📱 Смартфон куплен! Кошелек на телефоне активирован. +100{game_data["currency"]} бонус!'
     elif item_id == 'car' and not game_data['car_owned']:
         game_data['balance_card'] -= price
@@ -1207,7 +1155,6 @@ def transfer():
     if from_account == to_account:
         return jsonify({'success': False, 'message': 'Нельзя переводить на тот же счет!'})
     
-    # Проверка баланса
     if from_account == 'card':
         if amount > game_data['balance_card']:
             return jsonify({'success': False, 'message': 'Недостаточно средств на карте!'})
@@ -1223,7 +1170,6 @@ def transfer():
             return jsonify({'success': False, 'message': 'Недостаточно средств на депозите!'})
         game_data['balance_deposit'] -= amount
     
-    # Зачисление
     if to_account == 'card':
         game_data['balance_card'] += amount
     elif to_account == 'phone':
@@ -1240,4 +1186,5 @@ def transfer():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
